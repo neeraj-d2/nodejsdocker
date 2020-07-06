@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: k8s-demo
-    image: neerajd2/nodeappfromjenkins1
+    image: neerajd2/nodeappfromjenkins2
     ports:
     - name: nodejs-port
       containerPort: 8080
