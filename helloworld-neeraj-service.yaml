@@ -8,5 +8,5 @@ spec:
     targetPort: nodejs-port
     protocol: TCP
   selector:
-    app: helloworld-neeraj1
+    app: helloworld-neeraj2
   type: LoadBalancer
