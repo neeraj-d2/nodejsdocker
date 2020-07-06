@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nodehelloworld.example.com
+  name: helloworld-neeraj
   labels:
-    app: helloworld-neeraj1
+    app: helloworld-neeraj
 spec:
   containers:
   - name: k8s-demo
-    image: neerajd2/nodeappfromjenkins2
+    image: neerajd2/cloudsecops
     ports:
     - name: nodejs-port
       containerPort: 8080
