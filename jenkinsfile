@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    environment{
+        DOCKER_TAG = getDockerTag()
+    }
+    stages{
+    stage('Git Clone'){
+	steps{
+        git credentialsId: 'github-cred', url: 'https://github.com/neeraj-d2/nodejsdocker.git'
+		}
+    }
+    stage('Build'){
+	steps{
+        nodejs('npm') {}
+		}
+        
+    }
+    stage('Build docker image'){
+	steps{
+        sh "docker build . -t neerajd2/cloudsecops:${DOCKER_TAG}" 
+        }
+		}
+    stage('Docker push'){
+	steps{
+        withCredentials([string(credentialsId: 'dockerhubcred1', variable: 'dockerhubcred1')]) {
+    sh "docker login -u neerajd2 -p ${dockerhubcred1} "
+}
+       
+        
+        
+    sh "docker push neerajd2/cloudsecops:${DOCKER_TAG} "
+}
+    }
+    
+    stage('Deploy'){
+	steps{
+        sh "chmod +x ChangeTag.sh"
+        sh "./ChangeTag.sh  ${DOCKER_TAG}"
+        sh "kubectl apply -f node-app-pod.yml"
+        sh "kubectl apply -f helloworld-neeraj-service.yaml"
+    }
+	}
+}
+}
+def getDockerTag(){
+    def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
+    return tag
+}
