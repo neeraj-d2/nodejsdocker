@@ -11,7 +11,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
-      maxUnavailable: 1				  
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -19,10 +19,11 @@ spec:
     spec:
       containers:
       - name: helloworld-neeraj
-        image: neerajd2/cloudsecops:9c48b69bf6f62bcea1abf6534805ea658763644c
+        image: neerajd2/cloudsecops:2782ae1ed082795621bbbe268c57176bac7c0b2b
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+         - containerPort: 8080
+---
 apiVersion: v1
 kind: Service
 metadata:
