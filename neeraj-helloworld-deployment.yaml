@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: helloworld-neeraj
-        image: neerajd2/cloudsecops:v1
+        image: neerajd2/cloudsecops:071be8f066722b31be5ec2206bed41fdfe2cc499
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
