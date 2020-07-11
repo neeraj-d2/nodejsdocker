@@ -26,13 +26,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: nodejs-port
+            port: 8080
           initialDelaySeconds: 15
           timeoutSeconds: 30
         readinessProbe:
           httpGet:
             path: /
-            port: nodejs-port
+            port: 8080
           initialDelaySeconds: 15
           timeoutSeconds: 30
 ---
